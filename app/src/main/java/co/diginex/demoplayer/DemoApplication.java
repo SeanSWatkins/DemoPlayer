@@ -1,6 +1,8 @@
 package co.diginex.demoplayer;
 
 import android.app.Application;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
@@ -29,4 +31,5 @@ public class DemoApplication extends Application {
         //Initialise the library which will download images in the background.
         Fresco.initialize(this,config);
     }
+
 }

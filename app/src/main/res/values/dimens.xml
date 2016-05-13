@@ -8,4 +8,5 @@
     <dimen name="default_padding">8dp</dimen>
     <dimen name="min_button_width">64dp</dimen>
     <dimen name="textview_padding">24dp</dimen>
+    <dimen name="edittext_height">48dp</dimen>
 </resources>

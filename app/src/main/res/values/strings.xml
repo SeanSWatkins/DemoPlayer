@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">DemoPlayer</string>
+    <string name="feature_one">Feature One</string>
+    <string name="feature_two">Feature Two</string>
+    <string name="feature_select">Feature Select</string>
     <string name="play">Play</string>
     <string name="close">Close</string>
-
+    <string name="name">Name</string>
+    <string name="submit">Submit</string>
+    <string name="no_user">Please enter a name</string>
 
 </resources>

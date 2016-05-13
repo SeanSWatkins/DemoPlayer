@@ -29,6 +29,7 @@ public class FeatureOneActivity extends AppCompatActivity implements OnImageClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feature_one);
+        setTitle(R.string.feature_one);
         ButterKnife.bind(this);
     }
 

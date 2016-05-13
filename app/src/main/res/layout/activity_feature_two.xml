@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_f_two_coord"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:gravity="center">
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/default_padding">
+        
+        <EditText
+            android:id="@+id/activity_f_two_edittext_name"
+            android:layout_width="200dp"
+            android:layout_height="@dimen/edittext_height"
+            android:hint="@string/name"
+            style="@style/Widget.AppCompat.EditText"/>
+    </android.support.design.widget.TextInputLayout>
+    
+    <Button
+        android:id="@+id/activity_f_two_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/default_button_height"
+        android:text="@string/submit"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+   </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

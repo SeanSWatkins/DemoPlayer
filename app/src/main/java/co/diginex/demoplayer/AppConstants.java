@@ -10,4 +10,9 @@ public class AppConstants {
     public static final String IMAGE_URL = "url";
     public static final String NAME = "name";
     public static final String SOUND = "sound";
+
+    public static final String USERNAME = "username";
+    public static final String ALREADY_VISITED = "already_visited";
+
+    public static final int RESULT_CLOSE_APP = 43;
 }
