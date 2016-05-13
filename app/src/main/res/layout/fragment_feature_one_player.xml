@@ -4,18 +4,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <TextView
         android:id="@+id/fragment_f_one_player_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/textview_bot_padding"/>
+        android:paddingTop="@dimen/default_padding"
+        android:paddingRight="@dimen/textview_padding"
+        android:paddingLeft="@dimen/textview_padding"
+        android:paddingBottom="@dimen/textview_padding"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/default_padding"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:paddingBottom="@dimen/default_padding"
         android:gravity="right"
        >
 
@@ -24,8 +28,9 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/default_button_height"
             android:minWidth="@dimen/min_button_width"
-            android:background="@drawable/btn_bkg"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:padding="@dimen/default_padding"
+            android:textColor="@color/colorAccent"
             android:text="@string/dismiss"/>
 
         <Button
@@ -34,7 +39,8 @@
             android:layout_height="@dimen/default_button_height"
             android:layout_marginLeft="@dimen/default_button_padding"
             android:minWidth="@dimen/min_button_width"
-            android:background="@drawable/btn_bkg"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:textColor="@color/colorAccent"
             android:padding="@dimen/default_padding"
             android:text="@string/play"/>
     </LinearLayout>

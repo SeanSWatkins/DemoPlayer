@@ -1,5 +1,8 @@
 package co.diginex.demoplayer.featureone;
 
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.support.design.widget.CoordinatorLayout;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +15,7 @@ import butterknife.ButterKnife;
 import co.diginex.demoplayer.R;
 
 
-public class FeatureOneActivity extends AppCompatActivity implements OnImageClickListener{
+public class FeatureOneActivity extends AppCompatActivity implements OnImageClickListener {
 
     @BindView(R.id.activity_f_one_coordinator)
     CoordinatorLayout coordinatorLayoutFOne;
@@ -27,7 +30,6 @@ public class FeatureOneActivity extends AppCompatActivity implements OnImageClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feature_one);
         ButterKnife.bind(this);
-
     }
 
     @Override
@@ -37,14 +39,22 @@ public class FeatureOneActivity extends AppCompatActivity implements OnImageClic
         initRecyclerView();
     }
 
-    public void initRecyclerView(){
-        adapter = new FeatureOneRecyclerAdapter(this,this);
+    public void initRecyclerView() {
+        adapter = new FeatureOneRecyclerAdapter(this, this);
         recyclerFOne.setAdapter(adapter);
         recyclerFOne.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
     public void imageClick(int position) {
-        //TODO start the Dialog using the Json Object from adapter.getItemAtPosition(position);
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        Fragment previousFrag = getFragmentManager().findFragmentByTag("dialog");
+        if (previousFrag != null) {
+            fragmentTransaction.remove(previousFrag);
+        }
+        fragmentTransaction.addToBackStack(null);
+
+        DialogFragment frag = FeatureOnePlayerFragment.newInstance(adapter.getItemAtPosition(position));
+        frag.show(fragmentTransaction, "dialog");
     }
 }

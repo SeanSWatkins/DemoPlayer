@@ -1,12 +1,14 @@
 package co.diginex.demoplayer.featureone;
 
 import android.app.DialogFragment;
+import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.test.suitebuilder.annotation.Suppress;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +31,7 @@ import co.diginex.demoplayer.R;
 public class FeatureOnePlayerFragment extends DialogFragment {
 
     private SoundPool soundPool;
-    private static final int SOUND_ID = 7326;
+    private int soundId = -1;
 
     private String name;
     private String track;
@@ -37,18 +39,26 @@ public class FeatureOnePlayerFragment extends DialogFragment {
 
     @OnClick(R.id.fragment_f_one_player_dismiss)
     void dismissDialog() {
-        soundPool.stop(SOUND_ID);
-        soundPool.release();
+        if (soundPool != null) {
+            soundPool.stop(soundId);
+            soundPool.release();
+        }
         dismissAllowingStateLoss();
     }
 
     @OnClick(R.id.fragment_f_one_player_play)
     void playTrack() {
         soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+            @Override
+            public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+                soundPool.play(sampleId, 1.0f, 1.0f, 1, -1, 1);
+            }
+        });
         AssetManager assetManager = getActivity().getAssets();
         try {
-            soundPool.load(assetManager.openFd(track + ".wav"), 1);
-            soundPool.play(SOUND_ID,1.0f,1.0f,1,-1,1.25f);
+            AssetFileDescriptor afd = assetManager.openFd(track + ".mp3");
+            soundId = soundPool.load(afd, 1);
         } catch (IOException e) {
             e.printStackTrace();
         }
