@@ -30,6 +30,7 @@ public class FeatureTwoActivity extends AppCompatActivity {
         String name = nameEditText.getText().toString();
         if (!TextUtils.isEmpty(name)) {
             getPrefs().edit().putString(AppConstants.USERNAME, name).commit();
+            nameEditText.setText("");
             gotoDisplay();
         } else {
             showSnackbarForStringId(R.string.no_user);
@@ -46,15 +47,13 @@ public class FeatureTwoActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (TextUtils.isEmpty(getPrefs().getString(AppConstants.USERNAME, null))) {
-            //TODO start the other activity that shows the name
+        if (!TextUtils.isEmpty(getPrefs().getString(AppConstants.USERNAME, null))) {
             gotoDisplay();
         }
 
         setContentView(R.layout.activity_feature_two);
         setTitle(R.string.feature_two);
         ButterKnife.bind(this);
-
     }
 
     @Override
@@ -71,7 +70,8 @@ public class FeatureTwoActivity extends AppCompatActivity {
     }
 
     private void gotoDisplay() {
-        //TODO go to the display activity
+        Intent intent = new Intent(this, FeatureTwoDisplayUserActivity.class);
+        startActivityForResult(intent, REQUEST);
     }
 
     private void showSnackbarForStringId(@StringRes int text) {

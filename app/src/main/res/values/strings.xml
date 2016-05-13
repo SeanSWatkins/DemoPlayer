@@ -8,5 +8,9 @@
     <string name="name">Name</string>
     <string name="submit">Submit</string>
     <string name="no_user">Please enter a name</string>
-
+    <string name="clear">Clear User</string>
+    <string name="exit">Close Application</string>
+    <string name="feature_two_display">Feature Two Display</string>
+    <string name="welcome">Welcome %s</string>
+    <string name="welcome_back">Welcome %s, thanks for returning, we hope you enjoy your stay!</string>
 </resources>

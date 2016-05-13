@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".featureone.FeatureOneActivity"/>
         <activity android:name=".featuretwo.FeatureTwoActivity"/>
+        <activity android:name=".featuretwo.FeatureTwoDisplayUserActivity"/>
 
     </application>
 
