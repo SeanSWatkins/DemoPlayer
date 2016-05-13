@@ -26,7 +26,6 @@ public class FeatureOneActivity extends AppCompatActivity implements OnImageClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feature_one);
-        ButterKnife.setDebug(true);
         ButterKnife.bind(this);
 
     }
@@ -36,7 +35,6 @@ public class FeatureOneActivity extends AppCompatActivity implements OnImageClic
         super.onResume();
         //Calling in onResume for instances where data would be updated. Not in this case, but perhaps better practice?
         initRecyclerView();
-
     }
 
     public void initRecyclerView(){
