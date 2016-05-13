@@ -31,7 +31,7 @@
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:padding="@dimen/default_padding"
             android:textColor="@color/colorAccent"
-            android:text="@string/dismiss"/>
+            android:text="@string/close"/>
 
         <Button
             android:id="@+id/fragment_f_one_player_play"
