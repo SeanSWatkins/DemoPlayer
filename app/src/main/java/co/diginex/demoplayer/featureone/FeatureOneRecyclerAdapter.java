@@ -72,9 +72,6 @@ public class FeatureOneRecyclerAdapter extends RecyclerView.Adapter<FeatureOneRe
         @BindView(R.id.fone_recycler_item_description)
         TextView itemDescription;
 
-        @BindView(R.id.fone_recycler_item_heading)
-        TextView itemHeading;
-
         @BindView(R.id.fone_recycler_item_drawee)
         SimpleDraweeView itemImage;
 
@@ -97,7 +94,6 @@ public class FeatureOneRecyclerAdapter extends RecyclerView.Adapter<FeatureOneRe
                     .build();
 
             itemImage.setController(controller);
-            itemHeading.setText(trackItem.get(AppConstants.NAME).getAsString());
             itemDescription.setText(trackItem.get(AppConstants.DESCRIPTION).getAsString());
 
             itemImage.setOnClickListener(new View.OnClickListener() {

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/fragment_f_one_player_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/textview_bot_padding"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/default_padding"
+        android:gravity="right"
+       >
+
+        <Button
+            android:id="@+id/fragment_f_one_player_dismiss"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/default_button_height"
+            android:minWidth="@dimen/min_button_width"
+            android:background="@drawable/btn_bkg"
+            android:padding="@dimen/default_padding"
+            android:text="@string/dismiss"/>
+
+        <Button
+            android:id="@+id/fragment_f_one_player_play"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/default_button_height"
+            android:layout_marginLeft="@dimen/default_button_padding"
+            android:minWidth="@dimen/min_button_width"
+            android:background="@drawable/btn_bkg"
+            android:padding="@dimen/default_padding"
+            android:text="@string/play"/>
+    </LinearLayout>
+</LinearLayout>

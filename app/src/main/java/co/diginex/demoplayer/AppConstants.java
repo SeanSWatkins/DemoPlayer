@@ -9,5 +9,5 @@ public class AppConstants {
     public static final String DESCRIPTION = "description";
     public static final String IMAGE_URL = "url";
     public static final String NAME = "name";
-    private static final String SOUND = "sound";
+    public static final String SOUND = "sound";
 }
