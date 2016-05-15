@@ -3,12 +3,10 @@ package co.diginex.demoplayer.featureone;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.support.design.widget.CoordinatorLayout;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,13 +15,10 @@ import co.diginex.demoplayer.R;
 
 public class FeatureOneActivity extends AppCompatActivity implements OnImageClickListener {
 
-    @BindView(R.id.activity_f_one_coordinator)
-    CoordinatorLayout coordinatorLayoutFOne;
+    FeatureOneRecyclerAdapter adapter;
 
     @BindView(R.id.activity_f_one_recycler)
     RecyclerView recyclerFOne;
-
-    FeatureOneRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

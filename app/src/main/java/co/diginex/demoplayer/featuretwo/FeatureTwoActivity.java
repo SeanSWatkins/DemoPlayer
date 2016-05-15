@@ -1,5 +1,6 @@
 package co.diginex.demoplayer.featuretwo;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -41,7 +42,7 @@ public class FeatureTwoActivity extends AppCompatActivity {
     EditText nameEditText;
 
     @BindView(R.id.activity_f_two_coord)
-    CoordinatorLayout coord;
+    CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,6 +63,8 @@ public class FeatureTwoActivity extends AppCompatActivity {
         if (resultCode == AppConstants.RESULT_CLOSE_APP) {
             setResult(AppConstants.RESULT_CLOSE_APP);
             finish();
+        }else if(resultCode == Activity.RESULT_CANCELED){
+            finish();
         }
     }
 
@@ -70,11 +73,11 @@ public class FeatureTwoActivity extends AppCompatActivity {
     }
 
     private void gotoDisplay() {
-        Intent intent = new Intent(this, FeatureTwoDisplayUserActivity.class);
+        Intent intent = new Intent(this, FeatureTwoWelcomeUserActivity.class);
         startActivityForResult(intent, REQUEST);
     }
 
     private void showSnackbarForStringId(@StringRes int text) {
-        Snackbar.make(coord, text, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(coordinatorLayout, text, Snackbar.LENGTH_LONG).show();
     }
 }

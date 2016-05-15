@@ -7,8 +7,6 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.test.suitebuilder.annotation.Suppress;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,9 +31,12 @@ public class FeatureOnePlayerFragment extends DialogFragment {
     private SoundPool soundPool;
     private int soundId = -1;
 
-    private String name;
+    private String trackTitle;
     private String track;
-    private String description;
+    private String trackDescription;
+
+    @BindView(R.id.fragment_f_one_player_description)
+    TextView descriptionTextView;
 
     @OnClick(R.id.fragment_f_one_player_dismiss)
     void dismissDialog() {
@@ -64,17 +65,13 @@ public class FeatureOnePlayerFragment extends DialogFragment {
         }
     }
 
-    @BindView(R.id.fragment_f_one_player_description)
-    TextView descriptionTextView;
-
-
     static FeatureOnePlayerFragment newInstance(JsonObject track) {
 
         FeatureOnePlayerFragment featureOnePlayerFragment = new FeatureOnePlayerFragment();
         Bundle args = new Bundle();
-        args.putString(AppConstants.NAME, track.get(AppConstants.NAME).getAsString());
-        args.putString(AppConstants.DESCRIPTION, track.get(AppConstants.DESCRIPTION).getAsString());
-        args.putString(AppConstants.SOUND, track.get(AppConstants.SOUND).getAsString());
+        args.putString(AppConstants.TRACK_TITLE, track.get(AppConstants.TRACK_TITLE).getAsString());
+        args.putString(AppConstants.TRACK_DESCRIPTION, track.get(AppConstants.TRACK_DESCRIPTION).getAsString());
+        args.putString(AppConstants.TRACK, track.get(AppConstants.TRACK).getAsString());
         featureOnePlayerFragment.setArguments(args);
 
         return featureOnePlayerFragment;
@@ -85,9 +82,9 @@ public class FeatureOnePlayerFragment extends DialogFragment {
         super.onCreate(savedInstanceState);
 
         Bundle args = getArguments();
-        name = args.getString(AppConstants.NAME);
-        description = args.getString(AppConstants.DESCRIPTION);
-        track = args.getString(AppConstants.SOUND);
+        trackTitle = args.getString(AppConstants.TRACK_TITLE);
+        trackDescription = args.getString(AppConstants.TRACK_DESCRIPTION);
+        track = args.getString(AppConstants.TRACK);
     }
 
     @Nullable
@@ -95,8 +92,8 @@ public class FeatureOnePlayerFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feature_one_player, container, false);
         ButterKnife.bind(this, view);
-        getDialog().setTitle(name);
-        descriptionTextView.setText(description);
+        getDialog().setTitle(trackTitle);
+        descriptionTextView.setText(trackDescription);
         return view;
     }
 }

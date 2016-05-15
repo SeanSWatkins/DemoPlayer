@@ -3,7 +3,6 @@ package co.diginex.demoplayer.featureone;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +34,7 @@ public class FeatureOneRecyclerAdapter extends RecyclerView.Adapter<FeatureOneRe
     final LayoutInflater inflater;
 
     public FeatureOneRecyclerAdapter(OnImageClickListener onImageClickListener, final Context context) {
-        trackListJsonArray = new JsonParser().parse(AppConstants.featureOneJson).getAsJsonArray();
+        trackListJsonArray = new JsonParser().parse(AppConstants.FEATURE_ONE_JSON).getAsJsonArray();
         this.onImageClickListener = onImageClickListener;
         this.inflater = LayoutInflater.from(context);
     }
@@ -75,7 +74,6 @@ public class FeatureOneRecyclerAdapter extends RecyclerView.Adapter<FeatureOneRe
         @BindView(R.id.fone_recycler_item_drawee)
         SimpleDraweeView itemImage;
 
-
         public TrackViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -84,18 +82,21 @@ public class FeatureOneRecyclerAdapter extends RecyclerView.Adapter<FeatureOneRe
         public void bindItem(final JsonObject trackItem, final View.OnClickListener viewHolderImageClick) {
             //Setting the Drawee view to resize the image. If this is not done, the UI becomes janky as it tries to scale the large image to fit the small display space
             int width = 150, height = 150;
-
-            ImageRequest request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(trackItem.get(AppConstants.IMAGE_URL).getAsString()))
+            ImageRequest request = ImageRequestBuilder
+                    .newBuilderWithSource(Uri.parse(trackItem.get(AppConstants.TRACK_IMAGE_URL).getAsString()))
                     .setResizeOptions(new ResizeOptions(width, height))
                     .build();
+
             PipelineDraweeController controller = (PipelineDraweeController) Fresco.newDraweeControllerBuilder()
                     .setOldController(itemImage.getController())
                     .setImageRequest(request)
                     .build();
 
             itemImage.setController(controller);
-            itemDescription.setText(trackItem.get(AppConstants.DESCRIPTION).getAsString());
 
+            itemDescription.setText(trackItem.get(AppConstants.TRACK_DESCRIPTION).getAsString());
+
+            //Setting the onclick listener to the image only
             itemImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

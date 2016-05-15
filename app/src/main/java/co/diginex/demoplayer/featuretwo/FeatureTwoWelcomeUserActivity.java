@@ -17,7 +17,7 @@ import co.diginex.demoplayer.R;
 /**
  * Created by Sean on 13/05/2016.
  */
-public class FeatureTwoDisplayUserActivity extends AppCompatActivity {
+public class FeatureTwoWelcomeUserActivity extends AppCompatActivity {
 
     @BindView(R.id.activity_f_two_name_display)
     TextView nameDisplayText;
@@ -42,7 +42,7 @@ public class FeatureTwoDisplayUserActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feature_two_user_display);
-        setTitle(R.string.feature_two_display);
+        setTitle(R.string.feature_two_welcome);
         ButterKnife.bind(this);
 
         if (!getPrefs().getBoolean(AppConstants.ALREADY_VISITED, false)) {
@@ -51,6 +51,12 @@ public class FeatureTwoDisplayUserActivity extends AppCompatActivity {
         } else {
             nameDisplayText.setText(getString(R.string.welcome_back, getPrefs().getString(AppConstants.USERNAME, "")));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        setResult(Activity.RESULT_CANCELED);
+        super.onBackPressed();
     }
 
     private SharedPreferences getPrefs() {
